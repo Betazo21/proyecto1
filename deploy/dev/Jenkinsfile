@@ -14,7 +14,7 @@ pipeline {
             stage('Which Java?') {
                 steps {
                     script{
-                        env.JAVA_HOME="${tool 'java11'}"
+                        env.JAVA_HOME="${tool 'JAVA11'}"
                         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                         sh 'java --version'
                     }
@@ -23,7 +23,7 @@ pipeline {
             stage ('Build') {
                 steps {
                     script{
-                        env.JAVA_HOME="${tool 'java11'}"
+                        env.JAVA_HOME="${tool 'JAVA11'}"
                         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                         sh "echo $JAVA_HOME"
                         sh "mvn clean verify"
