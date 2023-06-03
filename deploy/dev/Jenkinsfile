@@ -19,14 +19,6 @@ pipeline {
                     }
                 }
              }   
-            stage('Which Java?') {
-                steps {
-                    script{
-                        
-                        sh 'javac --version'
-                    }
-                }
-            }
             stage ('Build') {
                 steps {
                     script{
