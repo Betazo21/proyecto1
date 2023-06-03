@@ -25,9 +25,17 @@ pipeline {
                     script{
                        dir("services/service-usuarios/"){
                         sh "mvn package"
+                        sh "ls target"
+                        DockerBuildAndPush("serviceclientes")
                        }
                     }
                 }    
             }
     }
+}
+
+def DockerBuildAndPush(entity){
+    sh "docker build -f 'Dockerfile' -t lgracia/dev:${entity} . --no-cache --network host"
+    sh "docker push lgracia/dev:${entity}"
+
 }
