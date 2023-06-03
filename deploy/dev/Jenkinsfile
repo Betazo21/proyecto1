@@ -23,10 +23,10 @@ pipeline {
             stage ('Build') {
                 steps {
                     script{
-                        env.JAVA_HOME="${tool 'JAVA11'}"
+                        env.JAVA_HOME="/opt/java/openjdk"
                         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-                        env.M2_HOME="${tool 'mv392'}"
-                        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
+                        //env.M2_HOME="${tool 'mv392'}"
+                        //env.PATH="${env.M2_HOME}/bin:${env.PATH}"
                         sh "echo $M2_HOME"
                         sh "mvn -version"
                     }
