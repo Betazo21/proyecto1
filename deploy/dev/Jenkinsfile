@@ -15,24 +15,17 @@ pipeline {
             steps{
                 script{
                         echo "Inicializando"
+                        sh 'java --version'
+                        sh "mvn -version"
                     }
                 }
              }   
-            stage('Which Java?') {
+            stage ('Build - Service Usuarios') {
                 steps {
                     script{
-                        sh 'java --version'
-                    }
-                }
-            }
-            stage ('Build') {
-                steps {
-                    script{
-                        
-                        sh "echo $JAVA_HOME"
-                        sh "echo $M2_HOME"
-                        sh "echo $PATH"
-                        sh "mvn -version"
+                       dir("services/service-usuarios/"){
+                        sh "mvn package"
+                       }
                     }
                 }    
             }
