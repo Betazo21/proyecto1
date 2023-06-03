@@ -7,7 +7,6 @@ pipeline {
     }
     
     environment {
-        JAVA_HOME = tool 'java'
         PATH = "$JAVA_HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
     }
     
