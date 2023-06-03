@@ -36,7 +36,7 @@ pipeline {
                 steps {
                     script{
                        dir("deploy/app/service-usuarios/"){
-                        sh "sed -i 's#SERVICEIMAGE/$DOCKER_REPO#serviceclientes#g' deploy.yaml"
+                        sh "sed -i 's#SERVICEIMAGE#$DOCKER_REPO:serviceclientes#g' deploy.yaml"
                         DeployKubernetes("deploy.yaml")
                        }
                     }
