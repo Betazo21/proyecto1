@@ -11,15 +11,11 @@ pipeline {
     }
     
     stages {
-          
+           
             stage('Which Java?') {
                 steps {
                     script{
-                         env.PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-                        env.JAVA_HOME="/var/jenkins_home/tools/hudson.model.JDK/JAVA11/openlogic-openjdk-11.0.18+10-linux-x64"
-                        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-                        env.M2_HOME="${tool 'mv392'}"
-                        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
+                        
                         sh 'java --version'
                     }
                 }
@@ -27,11 +23,7 @@ pipeline {
             stage ('Build') {
                 steps {
                     script{
-                         env.PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-                        env.JAVA_HOME="/var/jenkins_home/tools/hudson.model.JDK/JAVA11/openlogic-openjdk-11.0.18+10-linux-x64"
-                        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-                        env.M2_HOME="${tool 'mv392'}"
-                        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
+                        
                         sh "echo $JAVA_HOME"
                         sh "echo $M2_HOME"
                         sh "echo $PATH"
