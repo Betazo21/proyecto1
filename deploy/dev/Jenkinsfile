@@ -38,7 +38,7 @@ pipeline {
                        dir("deploy/app/service-usuarios/"){
                         sh "mvn package"
                         sh "ls target"
-                        sh "sed -i \"s/SERVICEIMAGE/$DOCKER_REPO:serviceclientes/g\""
+                        sh "sed -i \"s/SERVICEIMAGE/$DOCKER_REPO:serviceclientes/g\" deploy.yaml"
                         DeployKubernetes("deploy.yaml")
                        }
                     }
