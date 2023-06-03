@@ -14,7 +14,7 @@ pipeline {
             stage('Which Java?') {
                 steps {
                     script{
-                        env.JAVA_HOME="${tool 'JAVA11'}"
+                        env.JAVA_HOME="/opt/java/openjdk"
                         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                         sh 'java --version'
                     }
