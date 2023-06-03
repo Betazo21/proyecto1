@@ -21,6 +21,14 @@ pipeline {
                 }
              }   
             stage ('Build - Service Usuarios') {
+                when{
+                    anyOf{
+                        changeset "*services/service-usuarios/**"
+                        expression{
+                            currentBuild.previousBuild != "SUCCESS"
+                        }
+                    }
+                }
                 steps {
                     script{
                        dir("services/service-usuarios/"){
