@@ -5,6 +5,11 @@ pipeline {
         jdk 'java11'
     }
     
+    environment {
+        PATH = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+        PATH = "$JAVA_HOME/bin:${env.PATH}"
+    }
+    
     stages {
             stage('Which Java?') {
                 steps {
