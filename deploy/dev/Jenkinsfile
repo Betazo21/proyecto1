@@ -1,20 +1,18 @@
 pipeline {
     agent any
     
-   
+    
 
     environment{
         REGISTRYLOCATION = "https://www.google.com/"
-        JAVA_HOME="/opt/java/openjdk"
-        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
-        M2_HOME="/opt/apache-maven-3.9.2"
-        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
     }
     
     stages {
             stage('Which Java?') {
                 steps {
                     script{
+                        env.JAVA_HOME="/opt/java/openjdk"
+                        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                         sh 'java --version'
                     }
                 }
@@ -22,10 +20,14 @@ pipeline {
             stage ('Build') {
                 steps {
                     script{
+                        env.JAVA_HOME="/opt/java/openjdk"
+                        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+                        env.M2_HOME="/opt/apache-maven-3.9.2"
+                        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
                         sh "echo $M2_HOME"
                         sh "mvn -version"
 
-
+                        
                     }
                 }    
             }
