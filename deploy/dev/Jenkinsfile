@@ -25,7 +25,7 @@ pipeline {
                     anyOf{
                         changeset "*services/service-usuarios/**"
                         expression{
-                            currentBuild.previousBuild != "SUCCESS"
+                            currentBuild.previousBuild.result != "SUCCESS"
                         }
                     }
                 }
