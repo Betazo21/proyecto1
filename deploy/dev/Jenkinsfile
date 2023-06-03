@@ -6,9 +6,9 @@ pipeline {
     environment{
         REGISTRYLOCATION = "https://www.google.com/"
         JAVA_HOME="/opt/java/openjdk"
-        PATH="${env.JAVA_HOME}/bin:${env.PATH}"
+        env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
         M2_HOME="/opt/apache-maven-3.9.2"
-        PATH="${env.M2_HOME}/bin:${env.PATH}"
+        env.PATH="${env.M2_HOME}/bin:${env.PATH}"
     }
     
     stages {
