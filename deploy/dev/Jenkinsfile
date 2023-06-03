@@ -13,13 +13,14 @@ pipeline {
     stages {
             stage('Initialize'){
                 steps{
-                    env.PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+                    script{
+                        env.PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+                    }
                 }
             }
             stage('Which Java?') {
                 steps {
                     script{
-                        env.PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
                         env.JAVA_HOME="${tool 'JAVA11'}"
                         env.PATH="${env.JAVA_HOME}/bin:${env.PATH}"
                         sh 'java --version'
