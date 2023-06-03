@@ -35,7 +35,7 @@ pipeline {
 }
 
 def DockerBuildAndPush(entity){
-    sh "docker build -f 'Dockerfile' -t lgracia/dev:${entity} . --no-cache --network host"
-    sh "docker push lgracia/dev:${entity}"
+    sh "DOCKER_HOST=tcp://$192.168.100.92 docker build -f 'Dockerfile' -t lgracia/dev:${entity} . --no-cache --network host"
+    sh "DOCKER_HOST=tcp://$192.168.100.92 docker push lgracia/dev:${entity}"
 
 }
