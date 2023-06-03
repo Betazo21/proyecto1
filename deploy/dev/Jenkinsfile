@@ -19,6 +19,14 @@ pipeline {
                     }
                 }
              }   
+            stage('Which Java?') {
+                steps {
+                    script{
+                        
+                        sh 'java --version'
+                    }
+                }
+            }
             stage ('Build') {
                 steps {
                     script{
