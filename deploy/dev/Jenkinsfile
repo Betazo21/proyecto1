@@ -29,6 +29,8 @@ pipeline {
                         env.PATH="${env.M2_HOME}/bin:${env.PATH}"
                         sh "echo $M2_HOME"
                         sh "mvn -version"
+
+                        
                     }
                 }    
             }
