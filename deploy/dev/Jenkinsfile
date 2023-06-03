@@ -11,13 +11,7 @@ pipeline {
     }
     
     stages {
-            stage('Initialize'){
-                steps{
-                    script{
-                        
-                    }
-                }
-            }
+           
             stage('Which Java?') {
                 steps {
                     script{
