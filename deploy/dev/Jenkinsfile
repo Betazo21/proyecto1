@@ -38,7 +38,7 @@ pipeline {
                          withCredentials([usernamePassword(credentialsId: 'SONARTOKEN_MSUSUARIOS', passwordVariable: 'secretToken', usernameVariable: 'user')]){
                             sh "sed -i 's#SONARTOKEN_MSUSUARIOS#$secretToken#g' settings.xml"
                          }
-                        sh "mvn clean verify sonar:sonar"
+                        sh "mvn -s settings.xml clean verify sonar:sonar"
                         sh "mvn package"
                         sh "ls target"
                         DockerBuildAndPush("serviceclientes")
