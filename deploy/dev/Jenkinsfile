@@ -32,6 +32,13 @@ pipeline {
                 steps {
                     script{
                        dir("services/service-usuarios/"){
+                        sh "sed -i 's#SONARURL#$SONARURL#g' settings.xml"
+                        sh "sed -i 's#SONARPROJECTKEY#$SONARPROJECTKEY#g' settings.xml"
+                        sh "sed -i 's#PROJECTNAME#$PROJECTNAME#g' settings.xml"
+                         withCredentials([usernamePassword(credentialsId: 'SONARTOKEN_MSUSUARIOS', passwordVariable: 'secretToken', usernameVariable: 'user')]){
+                            sh "sed -i 's#SONARTOKEN_MSUSUARIOS#$secretToken#g' settings.xml"
+                         }
+                        sh "mvn clean verify sonar:sonar"
                         sh "mvn package"
                         sh "ls target"
                         DockerBuildAndPush("serviceclientes")
